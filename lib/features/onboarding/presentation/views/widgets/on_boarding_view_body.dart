@@ -2,8 +2,10 @@ import 'dart:developer';
 
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/config/cache_helper/cache_helper.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
+import 'package:fruits_hub/features/auth/presentation/views/login_view.dart';
 import 'package:fruits_hub/features/onboarding/presentation/views/widgets/on_boarding_page_view.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
@@ -59,7 +61,13 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           visible: currentPage == 1,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: CustomButton(text: 'ابدأ الان', onPressed: () {}),
+            child: CustomButton(
+              text: 'ابدأ الان',
+              onPressed: () async {
+                await CacheHelper.set(key: 'isOnBoardingVisited', value: true);
+                Navigator.pushReplacementNamed(context, LoginView.routeName);
+              },
+            ),
           ),
         ),
         SizedBox(height: 43),

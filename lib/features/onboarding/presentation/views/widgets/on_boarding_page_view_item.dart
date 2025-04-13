@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruits_hub/config/cache_helper/cache_helper.dart';
+import 'package:fruits_hub/core/utils/app_text_styles.dart';
+import 'package:fruits_hub/features/auth/presentation/views/login_view.dart';
 
 class OnBoardingPageViewItem extends StatelessWidget {
   const OnBoardingPageViewItem({
@@ -37,7 +40,24 @@ class OnBoardingPageViewItem extends StatelessWidget {
                   visible: isVisible,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: Text('تخط'),
+                    child: InkWell(
+                      onTap: () async {
+                        await CacheHelper.set(
+                          key: 'isOnBoardingVisited',
+                          value: true,
+                        );
+                        Navigator.pushReplacementNamed(
+                          context,
+                          LoginView.routeName,
+                        );
+                      },
+                      child: Text(
+                        'تخط',
+                        style: AppTextStyles.regular13.copyWith(
+                          color: Color(0xff949D9E),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -48,7 +68,11 @@ class OnBoardingPageViewItem extends StatelessWidget {
           SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 37),
-            child: Text(subTitle, textAlign: TextAlign.center),
+            child: Text(
+              subTitle,
+              textAlign: TextAlign.center,
+              style: AppTextStyles.semiBold13,
+            ),
           ),
         ],
       ),
