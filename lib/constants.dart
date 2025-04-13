@@ -1,0 +1,1 @@
+const khorizitalPadding = 16.0;
