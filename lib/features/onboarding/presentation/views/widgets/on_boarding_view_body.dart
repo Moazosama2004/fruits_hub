@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/config/cache_helper/cache_helper.dart';
+import 'package:fruits_hub/constants.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
 import 'package:fruits_hub/features/auth/presentation/views/login_view.dart';
@@ -64,7 +65,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             child: CustomButton(
               text: 'ابدأ الان',
               onPressed: () async {
-                await CacheHelper.set(key: 'isOnBoardingVisited', value: true);
+                await CacheHelper.set(key: kIsOnBoardingVisited, value: true);
                 Navigator.pushReplacementNamed(context, LoginView.routeName);
               },
             ),

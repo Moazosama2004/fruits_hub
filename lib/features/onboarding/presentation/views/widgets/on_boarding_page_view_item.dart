@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_hub/config/cache_helper/cache_helper.dart';
+import 'package:fruits_hub/constants.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/features/auth/presentation/views/login_view.dart';
 
@@ -43,7 +44,7 @@ class OnBoardingPageViewItem extends StatelessWidget {
                     child: InkWell(
                       onTap: () async {
                         await CacheHelper.set(
-                          key: 'isOnBoardingVisited',
+                          key: kIsOnBoardingVisited,
                           value: true,
                         );
                         Navigator.pushReplacementNamed(
