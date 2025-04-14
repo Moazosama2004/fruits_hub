@@ -54,7 +54,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             activeColor: AppColors.primaryColor,
           ),
         ),
-        SizedBox(height: 29),
+        const SizedBox(height: 29),
         Visibility(
           maintainSize: true,
           maintainAnimation: true,
@@ -71,7 +71,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             ),
           ),
         ),
-        SizedBox(height: 43),
+        const SizedBox(height: 43),
       ],
     );
   }

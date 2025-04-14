@@ -55,7 +55,7 @@ class OnBoardingPageViewItem extends StatelessWidget {
                       child: Text(
                         'تخط',
                         style: AppTextStyles.regular13.copyWith(
-                          color: Color(0xff949D9E),
+                          color: const Color(0xff949D9E),
                         ),
                       ),
                     ),
@@ -64,9 +64,9 @@ class OnBoardingPageViewItem extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 64),
+          const SizedBox(height: 64),
           title,
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 37),
             child: Text(

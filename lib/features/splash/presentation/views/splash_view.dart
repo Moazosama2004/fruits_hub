@@ -22,11 +22,11 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SplashViewBody());
+    return const Scaffold(body: SplashViewBody());
   }
 
   void excuteNavigation() {
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 5), () {
       if (CacheHelper.getBool(key: kIsOnBoardingVisited) ?? false) {
         Navigator.of(context).pushReplacementNamed(LoginView.routeName);
       } else {
