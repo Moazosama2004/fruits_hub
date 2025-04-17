@@ -28,10 +28,20 @@ class LoginViewBody extends StatelessWidget {
               keyboardType: TextInputType.emailAddress,
             ),
             const SizedBox(height: 16),
-            const CustomTextFormField(
+            CustomTextFormField(
               text: 'كلمة المرور',
               isObsecure: true,
-              isSuffixIconVisable: true,
+              suffixIcon: IconButton(
+                onPressed: () {
+                  // setState(() {
+                  //   isObsecure = !isObsecure;
+                  // });
+                },
+                icon: const Icon(
+                  Icons.remove_red_eye,
+                  color: Color(0xffC9CECF),
+                ),
+              ),
               keyboardType: TextInputType.visiblePassword,
             ),
             const SizedBox(height: 16),
