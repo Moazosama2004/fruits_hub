@@ -1,47 +1,43 @@
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fruits_hub/core/services/firebase_auth_service.dart';
+import 'package:fruits_hub/errors/exceptions.dart';
+import 'package:fruits_hub/errors/failure.dart';
+import 'package:fruits_hub/features/auth/data/models/user_model.dart';
+import 'package:fruits_hub/features/auth/domain/entities/user_entity.dart';
 import 'package:fruits_hub/features/auth/domain/repos/auth_repo.dart';
 
 class AuthRepoImpl extends AuthRepo {
-  final FirebaseAuth _firebaseAuth;
+  final FirebaseAuthService _firebaseAuthService;
 
-  AuthRepoImpl(this._firebaseAuth);
+  AuthRepoImpl(this._firebaseAuthService);
   @override
-  createUserWithEmailAndPassword({
+  Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword({
     required String email,
     required String password,
+    required String name,
   }) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
+      var user = await _firebaseAuthService.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      }
+      return right(UserModel.fromFirebaseUser(user));
+    } on CustomException catch (e) {
+      return left(ServerFailure(errMessage: e.toString()));
     } catch (e) {
-      print(e);
+      return left(
+        ServerFailure(errMessage: 'لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.'),
+      );
     }
   }
 
   @override
-  signInWithEmailAndPassword({
+  Future<Either<Failure, UserEntity>> signInWithEmailAndPassword({
     required String email,
     required String password,
-  }) async {
-    try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-      }
-    }
+  }) {
+    // TODO: implement signInWithEmailAndPassword
+    throw UnimplementedError();
   }
 }
