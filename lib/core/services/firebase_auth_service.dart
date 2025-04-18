@@ -35,7 +35,6 @@ class FirebaseAuthService {
       log(
         "Exception in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()}",
       );
-
       throw CustomException(
         errMessage: 'لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.',
       );
