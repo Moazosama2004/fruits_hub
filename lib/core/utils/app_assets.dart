@@ -26,6 +26,10 @@ class Assets {
   /// assets/images/logo.svg
   static const String imagesLogo = "assets/images/logo.svg";
 
+  /// Assets for imagesNotificationIcon
+  /// assets/images/notification_icon.svg
+  static const String imagesNotificationIcon = "assets/images/notification_icon.svg";
+
   /// Assets for imagesPageViewItem1BackgroundImage
   /// assets/images/page_view_item1_background_image.svg
   static const String imagesPageViewItem1BackgroundImage = "assets/images/page_view_item1_background_image.svg";
@@ -45,6 +49,14 @@ class Assets {
   /// Assets for imagesPlant
   /// assets/images/plant.svg
   static const String imagesPlant = "assets/images/plant.svg";
+
+  /// Assets for imagesProfileAvatar
+  /// assets/images/profile_avatar.svg
+  static const String imagesProfileAvatar = "assets/images/profile_avatar.svg";
+
+  /// Assets for imagesProfileImage
+  /// assets/images/profile_image.png
+  static const String imagesProfileImage = "assets/images/profile_image.png";
 
   /// Assets for imagesSplashBottom
   /// assets/images/splash_bottom.svg
