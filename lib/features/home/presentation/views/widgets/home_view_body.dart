@@ -4,6 +4,7 @@ import 'package:fruits_hub/core/utils/app_assets.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/custom_home_app_bar.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/featured_item.dart';
+import 'package:fruits_hub/features/home/presentation/views/widgets/featured_item_list_view.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/search_text_field.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -22,7 +23,7 @@ class HomeViewBody extends StatelessWidget {
                 SizedBox(height: 16),
                 SearchTextField(),
                 SizedBox(height: 12),
-                FeaturedItem(),
+                FeaturedItemListView(),
               ],
             ),
           ),
