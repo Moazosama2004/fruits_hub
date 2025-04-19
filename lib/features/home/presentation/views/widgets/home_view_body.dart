@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_hub/core/utils/app_assets.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
+import 'package:fruits_hub/features/home/presentation/views/widgets/best_selling_header.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/custom_home_app_bar.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/featured_item.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/featured_item_list_view.dart';
@@ -24,6 +25,9 @@ class HomeViewBody extends StatelessWidget {
                 SearchTextField(),
                 SizedBox(height: 12),
                 FeaturedItemListView(),
+                SizedBox(height: 10),
+                BestSellingHeader(),
+                SizedBox(height: 10),
               ],
             ),
           ),
