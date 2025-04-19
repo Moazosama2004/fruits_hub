@@ -4,8 +4,8 @@ import 'package:fruits_hub/core/helper/build_error_snack_bar.dart';
 import 'package:fruits_hub/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/signup_view_body.dart';
 
-class SignUpViewBodyBlocConsumer extends StatelessWidget {
-  const SignUpViewBodyBlocConsumer({super.key});
+class SignUpViewBodyBlocListener extends StatelessWidget {
+  const SignUpViewBodyBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +13,7 @@ class SignUpViewBodyBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is SignupSuccess) {
           showErrorBar(context, message: 'تم انشاء حساب جديد');
+          Navigator.pop(context);
         } else if (state is SignupFailure) {
           showErrorBar(context, message: state.errMessage);
         }
