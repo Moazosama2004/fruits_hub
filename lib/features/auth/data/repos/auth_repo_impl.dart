@@ -70,7 +70,8 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-      return right(UserModel.fromFirebaseUser(user));
+      UserEntity userEntity = await getUserData(uid: user.uid);
+      return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(errMessage: e.errMessage));
     } catch (e) {
@@ -89,7 +90,15 @@ class AuthRepoImpl extends AuthRepo {
     try {
       user = await firebaseAuthService.signInWithGoogle();
       UserEntity userEntity = UserModel.fromFirebaseUser(user);
-      await addUserData(user: userEntity);
+      var isUserExist = await databaseService.checkIfDataExists(
+        path: BackendEndPoint.isUserExists,
+        documentId: user.uid,
+      );
+      if (isUserExist) {
+        await addUserData(user: userEntity);
+      } else {
+        await getUserData(uid: user.uid);
+      }
       return right(userEntity);
     } catch (e) {
       await deleteUser(user);
@@ -106,7 +115,15 @@ class AuthRepoImpl extends AuthRepo {
     try {
       user = await firebaseAuthService.signInWithFacebook();
       UserEntity userEntity = UserModel.fromFirebaseUser(user);
-      await addUserData(user: userEntity);
+      var isUserExist = await databaseService.checkIfDataExists(
+        path: BackendEndPoint.isUserExists,
+        documentId: user.uid,
+      );
+      if (isUserExist) {
+        await addUserData(user: userEntity);
+      } else {
+        await getUserData(uid: user.uid);
+      }
       return right(userEntity);
     } catch (e) {
       await deleteUser(user);
@@ -122,6 +139,17 @@ class AuthRepoImpl extends AuthRepo {
     await databaseService.addData(
       path: BackendEndPoint.addUserData,
       data: UserModel.fromEntity(user).toMap(),
+      documentId: user.uId,
+    );
+  }
+
+  @override
+  Future<UserEntity> getUserData({required String uid}) async {
+    return UserModel.fromJson(
+      await databaseService.getData(
+        path: BackendEndPoint.getUserData,
+        documentId: uid,
+      ),
     );
   }
 }
