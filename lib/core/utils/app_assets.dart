@@ -10,6 +10,38 @@ class Assets {
   /// assets/images/apple_icon.svg
   static const String imagesAppleIcon = "assets/images/apple_icon.svg";
 
+  /// Assets for imagesBottomNavCartBoldIcon
+  /// assets/images/bottom_nav_cart_bold_icon.svg
+  static const String imagesBottomNavCartBoldIcon = "assets/images/bottom_nav_cart_bold_icon.svg";
+
+  /// Assets for imagesBottomNavCartOutlineIcon
+  /// assets/images/bottom_nav_cart_outline_icon.svg
+  static const String imagesBottomNavCartOutlineIcon = "assets/images/bottom_nav_cart_outline_icon.svg";
+
+  /// Assets for imagesBottomNavHomeBoldIcon
+  /// assets/images/bottom_nav_home_bold_icon.svg
+  static const String imagesBottomNavHomeBoldIcon = "assets/images/bottom_nav_home_bold_icon.svg";
+
+  /// Assets for imagesBottomNavHomeOutlineIcon
+  /// assets/images/bottom_nav_home_outline_icon.svg
+  static const String imagesBottomNavHomeOutlineIcon = "assets/images/bottom_nav_home_outline_icon.svg";
+
+  /// Assets for imagesBottomNavProductsBoldIcon
+  /// assets/images/bottom_nav_products_bold_icon.svg
+  static const String imagesBottomNavProductsBoldIcon = "assets/images/bottom_nav_products_bold_icon.svg";
+
+  /// Assets for imagesBottomNavProductsOutlineIcon
+  /// assets/images/bottom_nav_products_outline_icon.svg
+  static const String imagesBottomNavProductsOutlineIcon = "assets/images/bottom_nav_products_outline_icon.svg";
+
+  /// Assets for imagesBottomNavProfileBoldIcon
+  /// assets/images/bottom_nav_profile_bold_icon.svg
+  static const String imagesBottomNavProfileBoldIcon = "assets/images/bottom_nav_profile_bold_icon.svg";
+
+  /// Assets for imagesBottomNavProfileOutlineIcon
+  /// assets/images/bottom_nav_profile_outline_icon.svg
+  static const String imagesBottomNavProfileOutlineIcon = "assets/images/bottom_nav_profile_outline_icon.svg";
+
   /// Assets for imagesCheck
   /// assets/images/Check.svg
   static const String imagesCheck = "assets/images/Check.svg";
