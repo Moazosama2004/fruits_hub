@@ -1,7 +1,10 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fruits_hub/config/cache_helper/cache_helper.dart';
+import 'package:fruits_hub/constants.dart';
 import 'package:fruits_hub/core/utils/backend_end_point.dart';
 import 'package:fruits_hub/core/services/database_service.dart';
 import 'package:fruits_hub/core/services/firebase_auth_service.dart';
@@ -71,6 +74,7 @@ class AuthRepoImpl extends AuthRepo {
         password: password,
       );
       UserEntity userEntity = await getUserData(uid: user.uid);
+      await saveUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(errMessage: e.errMessage));
@@ -151,5 +155,11 @@ class AuthRepoImpl extends AuthRepo {
         documentId: uid,
       ),
     );
+  }
+
+  @override
+  Future saveUserData({required UserEntity user}) async {
+    String jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
+    await CacheHelper.set(key: kUserData, value: jsonData);
   }
 }
