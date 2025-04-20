@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruits_hub/config/cache_helper/cache_helper.dart';
+import 'package:fruits_hub/core/helper/get_user_entity.dart';
 import 'package:fruits_hub/core/utils/app_assets.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
+import 'package:fruits_hub/core/widgets/notification_widget.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
   const CustomHomeAppBar({super.key});
@@ -19,14 +22,10 @@ class CustomHomeAppBar extends StatelessWidget {
         style: AppTextStyles.regular16.copyWith(color: const Color(0xff949D9E)),
       ),
       subtitle: Text(
-        'معاذ أسامه',
+        getUserEntitiy().name,
         style: AppTextStyles.bold16.copyWith(color: Colors.black),
       ),
-      trailing: CircleAvatar(
-        radius: 18,
-        backgroundColor: const Color(0xffEEF8ED),
-        child: SvgPicture.asset(Assets.imagesNotificationIcon),
-      ),
+      trailing: const NotificationWidget(),
     );
   }
 }
