@@ -14,6 +14,7 @@ class ProductModel {
   final int expirationsMonths;
   final bool isOrganic;
   final int numberOfCalories;
+  int sellingCount;
   final int unitAmount;
   final num avgRating = 0;
   final num ratingCount = 0;
@@ -30,6 +31,7 @@ class ProductModel {
     required this.isOrganic,
     required this.numberOfCalories,
     required this.unitAmount,
+    this.sellingCount = 0,
     this.imageUrl,
     required this.reviews,
   });
@@ -75,6 +77,7 @@ class ProductModel {
       'description': description,
       'price': price,
       'isFeatured': isFeatured,
+      'sellingCount': sellingCount,
       'imageUrl': imageUrl,
       'expirationsMonths': expirationsMonths,
       'isOrganic': isOrganic,
