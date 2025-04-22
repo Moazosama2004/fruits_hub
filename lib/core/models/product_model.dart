@@ -88,4 +88,21 @@ class ProductModel {
       'reviews': reviews.map((e) => e.toJson()).toList(),
     };
   }
+
+  ProductEntity toEntity() {
+    return ProductEntity(
+      name: name,
+      code: code,
+      description: description,
+      price: price,
+      image: image,
+      isFeatured: isFeatured,
+      imageUrl: imageUrl,
+      expirationsMonths: expirationsMonths,
+      unitAmount: unitAmount,
+      numberOfCalories: numberOfCalories,
+      isOrganic: isOrganic,
+      reviews: reviews.map((e) => e.toEntity()).toList(),
+    );
+  }
 }

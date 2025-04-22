@@ -44,4 +44,14 @@ class ReviewModel {
       reviewDescription: entity.reviewDescription,
     );
   }
+
+  ReviewEntity toEntity() {
+    return ReviewEntity(
+      name: name,
+      image: image,
+      rating: rating,
+      date: date,
+      reviewDescription: reviewDescription,
+    );
+  }
 }
