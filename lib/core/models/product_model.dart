@@ -1,4 +1,8 @@
+import 'dart:math';
+
 import 'package:fruits_hub/core/entities/product_entity.dart';
+import 'package:fruits_hub/core/entities/review_entity.dart';
+import 'package:fruits_hub/core/helper/get_average_rating.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'review_model.dart';
@@ -8,7 +12,7 @@ class ProductModel {
   final String code;
   final String description;
   final num price;
-  final XFile image;
+
   final bool isFeatured;
   String? imageUrl;
   final int expirationsMonths;
@@ -16,8 +20,8 @@ class ProductModel {
   final int numberOfCalories;
   int sellingCount;
   final int unitAmount;
-  final num avgRating = 0;
-  final num ratingCount = 0;
+  final num avgRating;
+  final num ratingCount;
   final List<ReviewModel> reviews;
 
   ProductModel({
@@ -25,8 +29,9 @@ class ProductModel {
     required this.code,
     required this.description,
     required this.price,
-    required this.image,
     required this.isFeatured,
+    required this.avgRating,
+    required this.ratingCount,
     required this.expirationsMonths,
     required this.isOrganic,
     required this.numberOfCalories,
@@ -38,11 +43,12 @@ class ProductModel {
 
   factory ProductModel.fromEntity(ProductEntity entity) {
     return ProductModel(
+      avgRating: entity.avgRating,
+      ratingCount: entity.ratingCount,
       name: entity.name,
       code: entity.code,
       description: entity.description,
       price: entity.price,
-      image: entity.image,
       isFeatured: entity.isFeatured,
       imageUrl: entity.imageUrl,
       expirationsMonths: entity.expirationsMonths,
@@ -54,19 +60,28 @@ class ProductModel {
   }
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
+    final reviewsJson = json['reviews'] as List<dynamic>;
+
+    final parsedReviews =
+        reviewsJson
+            .map((e) => ReviewModel.fromJson(e as Map<String, dynamic>))
+            .toList();
     return ProductModel(
       name: json['name'],
       code: json['code'],
       description: json['description'],
       price: json['price'],
-      image: XFile(json['image']),
       isFeatured: json['isFeatured'],
       imageUrl: json['imageUrl'],
       unitAmount: json['unitAmount'],
       isOrganic: json['isOrganic'],
       numberOfCalories: json['numberOfCalories'],
       expirationsMonths: json['expirationsMonths'],
-      reviews: json['reviews'],
+      ratingCount: json['ratingCount'],
+      reviews: parsedReviews,
+      avgRating: getAverageRating(
+        parsedReviews.map((e) => e.toEntity()).toList(),
+      ),
     );
   }
 
@@ -95,7 +110,6 @@ class ProductModel {
       code: code,
       description: description,
       price: price,
-      image: image,
       isFeatured: isFeatured,
       imageUrl: imageUrl,
       expirationsMonths: expirationsMonths,
@@ -103,6 +117,8 @@ class ProductModel {
       numberOfCalories: numberOfCalories,
       isOrganic: isOrganic,
       reviews: reviews.map((e) => e.toEntity()).toList(),
+      avgRating: avgRating,
+      ratingCount: ratingCount,
     );
   }
 }

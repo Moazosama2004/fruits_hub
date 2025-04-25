@@ -7,14 +7,16 @@ ProductEntity getDummyProduct() {
     code: 'BNN123',
     description: 'Fresh organic bananas from local farms.',
     price: 2.99,
-    image: XFile(''),
     isFeatured: true,
     expirationsMonths: 2,
     isOrganic: true,
     numberOfCalories: 105,
     unitAmount: 6,
-    imageUrl: 'https://example.com/images/banana.png',
+    imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVNN58XFDLxdqtwwWRSE924NjtuSryXFGxjg&s',
     reviews: [],
+    avgRating: 0,
+    ratingCount: 0,
   );
 }
 

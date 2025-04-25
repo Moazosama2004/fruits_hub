@@ -6,15 +6,14 @@ class ProductEntity {
   final String code;
   final String description;
   final num price;
-  final XFile image;
   final bool isFeatured;
   String? imageUrl;
   final int expirationsMonths;
   bool isOrganic;
   final int numberOfCalories;
   final int unitAmount;
-  final num avgRating = 0;
-  final num ratingCount = 0;
+  final num avgRating;
+  final num ratingCount;
   final List<ReviewEntity> reviews;
 
   ProductEntity({
@@ -22,10 +21,11 @@ class ProductEntity {
     required this.code,
     required this.description,
     required this.price,
-    required this.image,
-    required this.isFeatured,
     required this.expirationsMonths,
     this.isOrganic = false,
+    required this.isFeatured,
+    required this.avgRating,
+    required this.ratingCount,
     required this.numberOfCalories,
     required this.unitAmount,
     this.imageUrl,

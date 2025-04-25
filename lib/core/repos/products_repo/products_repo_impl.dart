@@ -17,7 +17,7 @@ class ProductsRepoImpl implements ProductsRepo {
           await databaseService.getData(
                 path: BackendEndPoint.getProducts,
                 query: {
-                  'limit': 3,
+                  'limit': 10,
                   'orderBy': 'sellingCount',
                   'descending': true,
                 },
