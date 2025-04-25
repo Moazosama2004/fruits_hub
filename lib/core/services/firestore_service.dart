@@ -17,7 +17,7 @@ class FirestoreService implements DatabaseService {
       var data = await _firestore.collection(path).doc(documentId).get();
       return data.data();
     } else {
-      Query<Map<String, dynamic>> data = await _firestore.collection(path);
+      Query<Map<String, dynamic>> data = _firestore.collection(path);
       if (query != null) {
         if (query.containsKey('orderBy')) {
           data = data.orderBy(
@@ -28,9 +28,9 @@ class FirestoreService implements DatabaseService {
         if (query.containsKey('limit')) {
           data = data.limit(query['limit']);
         }
-        var result = await data.get();
-        return result.docs.map((e) => e.data()).toList();
       }
+      var result = await data.get();
+      return result.docs.map((e) => e.data()).toList();
     }
   }
 

@@ -6,16 +6,15 @@ import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/features/home/domain/entities/bottom_navigation_bar_item_entity.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
-  const CustomBottomNavigationBar({super.key});
-
+  const CustomBottomNavigationBar({super.key, required this.onItemTapped});
+  final ValueChanged<int> onItemTapped;
   @override
   State<CustomBottomNavigationBar> createState() =>
       _CustomBottomNavigationBarState();
 }
 
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
-  int currentIndex = 0;
-
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,29 +42,23 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             bottomNavigationBarItems.asMap().entries.map((e) {
               var index = e.key;
               var entity = e.value;
+
               return Expanded(
-                flex: index == currentIndex ? 3 : 2,
+                flex: index == selectedIndex ? 3 : 2,
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      currentIndex = index;
+                      selectedIndex = index;
+                      widget.onItemTapped(index);
                     });
                   },
                   child: NavigationBarItem(
-                    isSelected: index == currentIndex,
+                    isSelected: selectedIndex == index,
                     bottomNavigationBarItemEntity: entity,
                   ),
                 ),
               );
             }).toList(),
-        // bottomNavigationBarItems.map((e) {
-        //   return Expanded(
-        //     child: NavigationBarItem(
-        //       isSelected: false,
-        //       bottomNavigationBarItemEntity: e,
-        //     ),
-        //   );
-        // }).toList(),
       ),
     );
   }
@@ -97,7 +90,7 @@ class InActiveItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(image);
+    return Container(color: Colors.transparent, child: SvgPicture.asset(image));
   }
 }
 

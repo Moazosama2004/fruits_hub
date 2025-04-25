@@ -32,7 +32,7 @@ class _SplashViewState extends State<SplashView> {
       if (CacheHelper.getBool(key: kIsOnBoardingVisited) ?? false) {
         var isLoggedIn = FirebaseAuthService().isLoggedIn();
         if (isLoggedIn) {
-          Navigator.of(context).pushReplacementNamed(SigninView.routeName);
+          Navigator.of(context).pushReplacementNamed(MainView.routeName);
         } else {
           Navigator.of(context).pushReplacementNamed(SigninView.routeName);
         }
