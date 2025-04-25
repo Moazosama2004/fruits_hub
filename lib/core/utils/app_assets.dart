@@ -117,5 +117,9 @@ class Assets {
   /// Assets for imagesStrawberry
   /// assets/images/strawberry.png
   static const String imagesStrawberry = "assets/images/strawberry.png";
+
+  /// Assets for imagesTrash
+  /// assets/images/trash.svg
+  static const String imagesTrash = "assets/images/trash.svg";
 }
 

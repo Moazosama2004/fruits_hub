@@ -6,13 +6,16 @@ AppBar buildAppBar(
   BuildContext context, {
   required String title,
   bool showBackButton = false,
+  bool showleadingButton = false,
 }) {
   return AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0.0,
     title: Text(title, style: AppTextStyles.bold19),
     centerTitle: true,
-    actions: const [NotificationWidget()],
+    actions: [
+      Visibility(visible: showleadingButton, child: const NotificationWidget()),
+    ],
     leading: Visibility(
       visible: showBackButton,
       child: IconButton(
