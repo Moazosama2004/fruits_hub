@@ -8,6 +8,7 @@ import 'package:fruits_hub/features/home/presentation/views/products_view.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/home_view.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/main_view_body.dart';
+import 'package:fruits_hub/features/home/presentation/views/widgets/main_view_body_bloc_listener.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -30,7 +31,9 @@ class _MainViewState extends State<MainView> {
             setState(() {});
           },
         ),
-        body: SafeArea(child: MainViewBody(currentViewIndex: currentViewIndex)),
+        body: SafeArea(
+          child: MainViewBodyBlocListener(currentViewIndex: currentViewIndex),
+        ),
       ),
     );
   }
