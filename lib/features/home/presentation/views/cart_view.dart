@@ -24,7 +24,7 @@ class CartView extends StatelessWidget {
                 ],
               ),
             ),
-            const CartItemSliverList(),
+            const CartItemSliverList(cartItems: []),
           ],
         ),
         Positioned(
