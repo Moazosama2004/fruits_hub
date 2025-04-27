@@ -9,7 +9,7 @@ class CheckoutViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(children: [ActiveStepItem()]);
+    return const Column(children: [InActiveStepItem()]);
   }
 }
 
@@ -29,6 +29,30 @@ class ActiveStepItem extends StatelessWidget {
         Text(
           'الشحن',
           style: AppTextStyles.bold13.copyWith(color: AppColors.primaryColor),
+        ),
+      ],
+    );
+  }
+}
+
+class InActiveStepItem extends StatelessWidget {
+  const InActiveStepItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const CircleAvatar(
+          radius: 10,
+          backgroundColor: Color(0xFFF2F3F3),
+          child: Text('2', style: AppTextStyles.semiBold13),
+        ),
+        const SizedBox(width: 5.5),
+        Text(
+          'العنوان',
+          style: AppTextStyles.semiBold13.copyWith(
+            color: const Color(0xFFAAAAAA),
+          ),
         ),
       ],
     );
