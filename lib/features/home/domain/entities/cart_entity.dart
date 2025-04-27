@@ -27,4 +27,16 @@ class CartEntity {
     }
     return CartItemEntity(productEntity: product, count: 1);
   }
+
+  num calculateTotalPrice() {
+    num totalPrice = 0;
+    for (CartItemEntity cartItem in cartItems) {
+      totalPrice += cartItem.calculatorTotalPrice();
+    }
+    return totalPrice;
+  }
+
+  void removeCartItem(CartItemEntity cartItemEntity) {
+    cartItems.remove(cartItemEntity);
+  }
 }

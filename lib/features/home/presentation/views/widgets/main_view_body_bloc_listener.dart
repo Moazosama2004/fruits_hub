@@ -15,6 +15,8 @@ class MainViewBodyBlocListener extends StatelessWidget {
       listener: (context, state) {
         if (state is CartItemAdded) {
           showErrorBar(context, message: 'تمت العمليه بنجاح');
+        } else if (state is CartItemRemoved) {
+          showErrorBar(context, message: 'تم حذف العنصر بنجاح');
         }
       },
       child: MainViewBody(currentViewIndex: currentViewIndex),
