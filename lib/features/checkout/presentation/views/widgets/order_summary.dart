@@ -22,6 +22,7 @@ class OrderSummary extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -29,12 +30,14 @@ class OrderSummary extends StatelessWidget {
               Text('30جنية', style: AppTextStyles.semiBold13),
             ],
           ),
+          SizedBox(height: 8),
           Divider(
             color: Color(0xFFCACECE),
             endIndent: 32,
             indent: 32,
             thickness: 0.5,
           ),
+          SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

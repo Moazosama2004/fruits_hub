@@ -50,6 +50,10 @@ class Assets {
   /// assets/images/Check.svg
   static const String imagesCheck = "assets/images/Check.svg";
 
+  /// Assets for imagesEditIcon
+  /// assets/images/edit_icon.svg
+  static const String imagesEditIcon = "assets/images/edit_icon.svg";
+
   /// Assets for imagesEllipse
   /// assets/images/ellipse.svg
   static const String imagesEllipse = "assets/images/ellipse.svg";
@@ -73,6 +77,10 @@ class Assets {
   /// Assets for imagesGoogleIcon
   /// assets/images/google_icon.svg
   static const String imagesGoogleIcon = "assets/images/google_icon.svg";
+
+  /// Assets for imagesLocation
+  /// assets/images/location.svg
+  static const String imagesLocation = "assets/images/location.svg";
 
   /// Assets for imagesLogo
   /// assets/images/logo.svg
