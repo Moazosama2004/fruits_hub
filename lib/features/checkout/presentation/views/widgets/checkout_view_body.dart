@@ -39,7 +39,10 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           const SizedBox(height: 20),
           const CheckoutSteps(),
           Expanded(
-            child: CheckOutStepsPageView(pageController: pageController),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24.0),
+              child: CheckOutStepsPageView(pageController: pageController),
+            ),
           ),
           CustomButton(text: 'التالي', onPressed: () {}),
           const SizedBox(height: 25),
