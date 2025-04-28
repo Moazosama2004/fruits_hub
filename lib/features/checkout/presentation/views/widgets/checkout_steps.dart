@@ -5,7 +5,13 @@ import 'package:fruits_hub/features/checkout/presentation/views/widgets/in_activ
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/step_item.dart';
 
 class CheckoutSteps extends StatelessWidget {
-  const CheckoutSteps({super.key});
+  const CheckoutSteps({
+    super.key,
+    required this.currentIndex,
+    required this.pageController,
+  });
+  final int currentIndex;
+  final PageController pageController;
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +20,19 @@ class CheckoutSteps extends StatelessWidget {
       children: List.generate(
         getStringsSteps().length,
         (index) => Expanded(
-          child: StepItem(
-            index: '${index + 1}',
-            isActive: true,
-            text: getStringsSteps()[index],
+          child: GestureDetector(
+            onTap: () {
+              pageController.animateToPage(
+                index,
+                duration: const Duration(milliseconds: 10),
+                curve: Curves.bounceIn,
+              );
+            },
+            child: StepItem(
+              index: '${index + 1}',
+              isActive: index <= currentIndex,
+              text: getStringsSteps()[index],
+            ),
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/helper/get_next_page_string.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps_page_view.dart';
@@ -12,10 +13,15 @@ class CheckoutViewBody extends StatefulWidget {
 
 class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   late PageController pageController;
+  int currentIndex = 0;
 
   @override
   void initState() {
     pageController = PageController();
+    pageController.addListener(() {
+      currentIndex = pageController.page!.round();
+      setState(() {});
+    });
     super.initState();
   }
 
@@ -32,7 +38,10 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          const CheckoutSteps(),
+          CheckoutSteps(
+            currentIndex: currentIndex,
+            pageController: pageController,
+          ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 24.0),
@@ -40,11 +49,12 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
             ),
           ),
           CustomButton(
-            text: 'التالي',
+            text: getNextPageString(currentIndex),
             onPressed: () {
-              pageController.nextPage(
+              pageController.animateToPage(
+                currentIndex + 1,
                 duration: const Duration(milliseconds: 300),
-                curve: Curves.easeIn,
+                curve: Curves.bounceIn,
               );
             },
           ),
