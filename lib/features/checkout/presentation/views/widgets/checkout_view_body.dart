@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/helper/build_error_snack_bar.dart';
 import 'package:fruits_hub/core/helper/get_next_page_string.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
+import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps_page_view.dart';
+import 'package:provider/provider.dart';
 
 class CheckoutViewBody extends StatefulWidget {
   const CheckoutViewBody({super.key});
@@ -51,11 +54,15 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           CustomButton(
             text: getNextPageString(currentIndex),
             onPressed: () {
-              pageController.animateToPage(
-                currentIndex + 1,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.bounceIn,
-              );
+              if (context.read<OrderEntity>().payWithCash != null) {
+                pageController.animateToPage(
+                  currentIndex + 1,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.bounceIn,
+                );
+              } else {
+                showErrorBar(context, message: 'يرجي اختيار طريقه الدفع');
+              }
             },
           ),
           const SizedBox(height: 25),
