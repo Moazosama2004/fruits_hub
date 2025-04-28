@@ -6,14 +6,19 @@ import 'package:fruits_hub/features/checkout/presentation/views/widgets/order_su
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/payment_item.dart';
 
 class PaymentSection extends StatelessWidget {
-  const PaymentSection({super.key});
+  const PaymentSection({super.key, required this.pageController});
+  final PageController pageController;
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [OrderSummary(), SizedBox(height: 16), ConfirmOrderWidget()],
+        children: [
+          const OrderSummary(),
+          const SizedBox(height: 16),
+          ConfirmOrderWidget(pageController: pageController),
+        ],
       ),
     );
   }
