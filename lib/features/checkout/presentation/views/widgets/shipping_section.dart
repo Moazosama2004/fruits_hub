@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/shipping_item.dart';
+import 'package:provider/provider.dart';
 
 class ShippingSection extends StatefulWidget {
   const ShippingSection({super.key});
@@ -10,14 +12,16 @@ class ShippingSection extends StatefulWidget {
 
 class _ShippingSectionState extends State<ShippingSection> {
   int currentIndex = -1;
+
   @override
   Widget build(BuildContext context) {
+    var orderEntity = context.read<OrderEntity>();
     return Column(
       children: [
         ShippingItem(
           title: 'الدفع عند الاستلام',
           subTitle: 'التسليم من المكان',
-          price: 40,
+          price: orderEntity.cartEntity.calculateTotalPrice().toInt() + 30,
           isSelected: currentIndex == 0,
           onTap: () {
             currentIndex = 0;
@@ -28,7 +32,7 @@ class _ShippingSectionState extends State<ShippingSection> {
         ShippingItem(
           title: 'الدفع أونلاين ',
           subTitle: 'يرجي تحديد طريقه الدفع',
-          price: 40,
+          price: orderEntity.cartEntity.calculateTotalPrice().toInt(),
           isSelected: currentIndex == 1,
           onTap: () {
             currentIndex = 1;
