@@ -5,11 +5,11 @@ import 'package:fruits_hub/features/home/presentation/manager/cart_item_cubit/ca
 class OrderEntity {
   final CartEntity cartEntity;
   bool? payWithCash;
-  final ShippingAddressEntity? shippingAddressEntity;
+  ShippingAddressEntity shippingAddressEntity;
 
   OrderEntity({
     required this.cartEntity,
     this.payWithCash,
-    this.shippingAddressEntity,
+    required this.shippingAddressEntity,
   });
 }
