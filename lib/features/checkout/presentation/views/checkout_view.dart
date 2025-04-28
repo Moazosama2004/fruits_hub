@@ -7,6 +7,7 @@ import 'package:fruits_hub/core/widgets/custom_app_bar.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/shipping_address_entity.dart';
 import 'package:fruits_hub/features/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
+import 'package:fruits_hub/features/checkout/presentation/views/widgets/add_order_cubit_bloc_consumer.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_view_body.dart';
 import 'package:fruits_hub/features/home/domain/entities/cart_entity.dart';
 import 'package:fruits_hub/features/home/domain/entities/cart_item_entity.dart';
@@ -47,7 +48,7 @@ class _CheckoutViewState extends State<CheckoutView> {
         ),
         body: Provider.value(
           value: orderEntity,
-          child: const CheckoutViewBody(),
+          child: const AddOrderCubitBlocConsumer(child: CheckoutViewBody()),
         ),
       ),
     );

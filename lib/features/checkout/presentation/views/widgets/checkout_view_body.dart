@@ -3,6 +3,7 @@ import 'package:fruits_hub/core/helper/build_error_snack_bar.dart';
 import 'package:fruits_hub/core/helper/get_next_page_string.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
+import 'package:fruits_hub/features/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps_page_view.dart';
 import 'package:provider/provider.dart';
@@ -67,7 +68,12 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 _handleShippingSectionNavigation(context);
               } else if (currentIndex == 1) {
                 _handleAddressSectionNavigation(context);
-              } else {}
+              } else {
+                var orderEntity = context.read<OrderEntity>();
+                context.read<AddOrderCubit>().addOrder(
+                  orderEntity: orderEntity,
+                );
+              }
             },
           ),
           const SizedBox(height: 25),
