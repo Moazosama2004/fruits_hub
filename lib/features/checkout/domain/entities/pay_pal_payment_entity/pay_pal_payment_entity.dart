@@ -37,4 +37,8 @@ class PayPalPaymentEntity {
     'description': description,
     'item_list': itemList?.toJson(),
   };
+
+  @override
+  String toString() =>
+      'PayPalPaymentEntity(amount: $amount, description: $description, itemList: $itemList)';
 }

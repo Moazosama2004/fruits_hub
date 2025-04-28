@@ -16,7 +16,7 @@ class Details {
   factory Details.fromEntity(OrderEntity orderEntity) => Details(
     subtotal: orderEntity.cartEntity.calculateTotalPrice().toString(),
     shipping: orderEntity.calculateShippingCost().toString(),
-    shippingDiscount: orderEntity.calculateShippingCost().toInt(),
+    shippingDiscount: orderEntity.calculateShippingDiscount().toInt(),
   );
 
   Map<String, dynamic> toJson() => {
@@ -24,4 +24,8 @@ class Details {
     'shipping': shipping,
     'shipping_discount': shippingDiscount,
   };
+
+  @override
+  String toString() =>
+      'Details(subtotal: $subtotal, shipping: $shipping, shippingDiscount: $shippingDiscount)';
 }

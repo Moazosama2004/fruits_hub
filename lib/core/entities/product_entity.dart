@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:fruits_hub/core/entities/review_entity.dart';
 import 'package:image_picker/image_picker.dart';
+
+import 'package:fruits_hub/core/entities/review_entity.dart';
 
 class ProductEntity extends Equatable {
   final String name;
@@ -35,4 +36,9 @@ class ProductEntity extends Equatable {
 
   @override
   List<Object?> get props => [code];
+
+  @override
+  String toString() {
+    return 'ProductEntity(name: $name, code: $code, description: $description, price: $price, isFeatured: $isFeatured, imageUrl: $imageUrl, expirationsMonths: $expirationsMonths, isOrganic: $isOrganic, numberOfCalories: $numberOfCalories, unitAmount: $unitAmount, avgRating: $avgRating, ratingCount: $ratingCount, reviews: $reviews)';
+  }
 }

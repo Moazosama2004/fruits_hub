@@ -39,4 +39,7 @@ class CartEntity {
   void removeCartItem(CartItemEntity cartItemEntity) {
     cartItems.remove(cartItemEntity);
   }
+
+  @override
+  String toString() => 'CartEntity(cartItems: $cartItems)';
 }

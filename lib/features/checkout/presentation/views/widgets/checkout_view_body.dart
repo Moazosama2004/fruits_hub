@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:fruits_hub/core/helper/build_error_snack_bar.dart';
 import 'package:fruits_hub/core/helper/get_next_page_string.dart';
+import 'package:fruits_hub/core/utils/app_keys.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/pay_pal_payment_entity/pay_pal_payment_entity.dart';
@@ -44,6 +47,8 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    var orderEntity = context.read<OrderEntity>();
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
@@ -71,7 +76,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
               } else if (currentIndex == 1) {
                 _handleAddressSectionNavigation(context);
               } else {
-                _processPaypalPayment();
+                _processPaypalPayment(orderEntity: orderEntity);
                 // var orderEntity = context.read<OrderEntity>();
                 // context.read<AddOrderCubit>().addOrder(
                 //   orderEntity: orderEntity,
@@ -110,27 +115,24 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
     }
   }
 
-  void _processPaypalPayment() {
+  void _processPaypalPayment({required OrderEntity orderEntity}) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder:
             (BuildContext context) => PaypalCheckoutView(
               sandboxMode: true,
-              clientId: "",
-              secretKey: "",
-              transactions: const [
-                PayPalPaymentEntity(
-                  amount: ,
-                  description: ,
-                  itemList: ,
-                ),
+              clientId: kPaypalClientId,
+              secretKey: kPaypalSecretKey,
+              transactions: [
+                PayPalPaymentEntity.fromEntity(orderEntity).toJson(),
               ],
               note: "Contact us for any questions on your order.",
               onSuccess: (Map params) async {
                 print("onSuccess: $params");
+                Navigator.pop(context);
+                showErrorBar(context, message: 'تمت العمليه بنجاح.');
               },
               onError: (error) {
-                print("onError: $error");
                 Navigator.pop(context);
               },
               onCancel: () {

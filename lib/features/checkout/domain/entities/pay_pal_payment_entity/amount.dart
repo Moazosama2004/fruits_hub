@@ -30,4 +30,8 @@ class Amount {
     'currency': currency,
     'details': details?.toJson(),
   };
+
+  @override
+  String toString() =>
+      'Amount(total: $total, currency: $currency, details: $details)';
 }
