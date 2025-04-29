@@ -38,6 +38,8 @@ class OrderModel {
       'totalPrice': totalPrice,
       'paymentMethod': paymentMethod,
       'shippingAddress': shippingAddressModel.toJson(),
+      'status': 'Pending',
+      'date': DateTime.now().toString(),
       'orderProducts':
           orderProducts.map((product) => product.toJson()).toList(),
     };

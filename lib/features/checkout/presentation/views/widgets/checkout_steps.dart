@@ -13,9 +13,11 @@ class CheckoutSteps extends StatelessWidget {
     super.key,
     required this.currentIndex,
     required this.pageController,
+    required this.onTap,
   });
   final int currentIndex;
   final PageController pageController;
+  final ValueChanged<int> onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +28,19 @@ class CheckoutSteps extends StatelessWidget {
         (index) => Expanded(
           child: GestureDetector(
             onTap: () {
-              if (context.read<OrderEntity>().payWithCash != null) {
-                pageController.animateToPage(
-                  index,
-                  duration: const Duration(milliseconds: 10),
-                  curve: Curves.bounceIn,
-                );
-              } else {
-                showErrorBar(context, message: 'يرجي اختيار طريقه الدفع');
-              }
+              onTap(index);
             },
+            // onTap: () {
+            // if (context.read<OrderEntity>().payWithCash != null) {
+            //   pageController.animateToPage(
+            //     index,
+            //     duration: const Duration(milliseconds: 10),
+            //     curve: Curves.bounceIn,
+            //   );
+            //   } else {
+            //     showErrorBar(context, message: 'يرجي اختيار طريقه الدفع');
+            //   }
+            // },
             child: StepItem(
               index: '${index + 1}',
               isActive: index <= currentIndex,

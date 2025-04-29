@@ -57,6 +57,23 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           CheckoutSteps(
             currentIndex: currentIndex,
             pageController: pageController,
+            onTap: (index) {
+              if (index == 0) {
+                pageController.animateToPage(
+                  index,
+                  duration: const Duration(milliseconds: 10),
+                  curve: Curves.bounceIn,
+                );
+              } else if (index == 1) {
+                _handleShippingSectionNavigation(context);
+              } else {
+                if (currentIndex == 1) {
+                  _handleAddressSectionNavigation(context);
+                } else {
+                  _handleShippingSectionNavigation(context);
+                }
+              }
+            },
           ),
           Expanded(
             child: Padding(
@@ -116,6 +133,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   }
 
   void _processPaypalPayment({required OrderEntity orderEntity}) {
+    var addOrderCubit = context.read<AddOrderCubit>();
     Navigator.of(context).push(
       MaterialPageRoute(
         builder:
@@ -130,6 +148,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
               onSuccess: (Map params) async {
                 print("onSuccess: $params");
                 Navigator.pop(context);
+                addOrderCubit.addOrder(orderEntity: orderEntity);
                 showErrorBar(context, message: 'تمت العمليه بنجاح.');
               },
               onError: (error) {
