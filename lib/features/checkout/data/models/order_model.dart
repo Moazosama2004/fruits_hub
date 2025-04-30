@@ -17,7 +17,7 @@ class OrderModel {
     required this.orderProducts,
   });
 
-  factory OrderModel.fromEntity(OrderEntity orderEntity) {
+  factory OrderModel.fromEntity(OrderInputEntity orderEntity) {
     return OrderModel(
       uId: orderEntity.uId,
       totalPrice: orderEntity.cartEntity.calculateTotalPrice().toDouble(),

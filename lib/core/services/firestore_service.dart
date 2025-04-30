@@ -7,7 +7,6 @@ class FirestoreService implements DatabaseService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
-  @override
   Future<dynamic> getData({
     required String path,
     String? documentId,

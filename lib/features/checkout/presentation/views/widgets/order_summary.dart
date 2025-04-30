@@ -18,7 +18,7 @@ class OrderSummary extends StatelessWidget {
             children: [
               const Text('المجموع الفرعي :', style: AppTextStyles.regular13),
               Text(
-                '${context.read<OrderEntity>().cartEntity.calculateTotalPrice()} جنيه',
+                '${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice()} جنيه',
                 textAlign: TextAlign.right,
                 style: AppTextStyles.semiBold16,
               ),
@@ -45,7 +45,7 @@ class OrderSummary extends StatelessWidget {
             children: [
               const Text('الكلي', style: AppTextStyles.bold16),
               Text(
-                '${context.read<OrderEntity>().cartEntity.calculateTotalPrice() + 30} جنيه',
+                '${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() + 30} جنيه',
                 style: AppTextStyles.bold16,
               ),
             ],

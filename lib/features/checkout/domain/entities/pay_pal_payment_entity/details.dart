@@ -13,7 +13,7 @@ class Details {
     shippingDiscount: json['shipping_discount'] as int?,
   );
 
-  factory Details.fromEntity(OrderEntity orderEntity) => Details(
+  factory Details.fromEntity(OrderInputEntity orderEntity) => Details(
     subtotal: orderEntity.cartEntity.calculateTotalPrice().toString(),
     shipping: orderEntity.calculateShippingCost().toString(),
     shippingDiscount: orderEntity.calculateShippingDiscount().toInt(),

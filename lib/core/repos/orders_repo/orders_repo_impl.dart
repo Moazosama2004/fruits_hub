@@ -13,7 +13,7 @@ class OrdersRepoImpl implements OrdersRepo {
 
   @override
   Future<Either<Failure, void>> addOrders({
-    required OrderEntity orderEntity,
+    required OrderInputEntity orderEntity,
   }) async {
     try {
       var result = await databaseService.addData(

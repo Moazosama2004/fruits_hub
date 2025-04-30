@@ -16,7 +16,8 @@ class AddressInputSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var shippingEntitiy = context.read<OrderEntity>().shippingAddressEntity;
+    var shippingEntitiy =
+        context.read<OrderInputEntity>().shippingAddressEntity;
     return ValueListenableBuilder<AutovalidateMode>(
       valueListenable: valueListenable,
       builder:

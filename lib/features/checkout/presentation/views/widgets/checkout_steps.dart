@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/helper/build_error_snack_bar.dart';
 import 'package:fruits_hub/core/helper/get_strings_steps.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart'
-    show OrderEntity;
+    show OrderInputEntity;
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/active_step_item.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/in_active_step_item.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/step_item.dart';

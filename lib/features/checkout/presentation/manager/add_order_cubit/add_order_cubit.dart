@@ -11,7 +11,7 @@ class AddOrderCubit extends Cubit<AddOrderState> {
 
   final OrdersRepo ordersRepo;
 
-  addOrder({required OrderEntity orderEntity}) async {
+  addOrder({required OrderInputEntity orderEntity}) async {
     emit(AddOrderLoading());
     var result = await ordersRepo.addOrders(orderEntity: orderEntity);
     result.fold(

@@ -30,7 +30,10 @@ class ConfirmOrderWidget extends StatelessWidget {
               SvgPicture.asset(Assets.imagesLocation),
               const SizedBox(width: 8),
               Text(
-                context.read<OrderEntity>().shippingAddressEntity.toString(),
+                context
+                    .read<OrderInputEntity>()
+                    .shippingAddressEntity
+                    .toString(),
                 textAlign: TextAlign.right,
                 style: AppTextStyles.regular16.copyWith(
                   color: const Color(0xFF4E5556),

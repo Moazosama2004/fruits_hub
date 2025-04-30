@@ -47,7 +47,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    var orderEntity = context.read<OrderEntity>();
+    var orderEntity = context.read<OrderInputEntity>();
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -108,7 +108,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   }
 
   void _handleShippingSectionNavigation(BuildContext context) {
-    if (context.read<OrderEntity>().payWithCash != null) {
+    if (context.read<OrderInputEntity>().payWithCash != null) {
       pageController.animateToPage(
         currentIndex + 1,
         duration: const Duration(milliseconds: 300),
@@ -132,7 +132,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
     }
   }
 
-  void _processPaypalPayment({required OrderEntity orderEntity}) {
+  void _processPaypalPayment({required OrderInputEntity orderEntity}) {
     var addOrderCubit = context.read<AddOrderCubit>();
     Navigator.of(context).push(
       MaterialPageRoute(
