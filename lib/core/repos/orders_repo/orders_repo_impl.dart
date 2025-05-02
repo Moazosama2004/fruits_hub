@@ -15,10 +15,12 @@ class OrdersRepoImpl implements OrdersRepo {
   Future<Either<Failure, void>> addOrders({
     required OrderInputEntity orderEntity,
   }) async {
+    OrderModel orderModel = OrderModel.fromEntity(orderEntity);
     try {
       var result = await databaseService.addData(
         path: BackendEndPoint.addOrders,
-        data: OrderModel.fromEntity(orderEntity).toJson(),
+        data: orderModel.toJson(),
+        documentId: orderModel.orderId,
       );
       return right(null);
     } catch (e) {
